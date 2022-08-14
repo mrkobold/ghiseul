@@ -8,16 +8,16 @@
 
     <EditText
         android:id="@+id/edit_text"
-        android:layout_width="363dp"
-        android:layout_height="366dp"
+        android:layout_width="365dp"
+        android:layout_height="109dp"
         android:layout_marginBottom="16dp"
         android:layout_weight="1"
         android:background="#2B2B2B"
         android:ems="10"
+        android:focusable="false"
         android:gravity="start|top"
         android:textColor="#278100"
         android:textSize="2mm"
-        android:focusable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -74,6 +74,15 @@
         android:text="ForgetAll"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/check" />
+
+    <TextView
+        android:id="@+id/htmlview"
+        android:layout_width="366dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:scrollbars = "vertical"
+        app:layout_constraintBottom_toTopOf="@+id/edit_text"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

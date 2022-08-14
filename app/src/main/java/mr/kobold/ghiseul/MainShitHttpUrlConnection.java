@@ -8,8 +8,11 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Html;
 import android.text.InputType;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -130,6 +133,20 @@ public class MainShitHttpUrlConnection {
             show("Saving currently read data to file...");
             saveCurrentContent();
             show("Done\n\n\n");
+
+            if (!haveUi)
+                return;
+
+            MainActivity mainActivity = (MainActivity) context;
+            mainActivity.runOnUiThread(() -> {
+                TextView textView = ((TextView) mainActivity.findViewById(R.id.htmlview));
+                textView.setMovementMethod(new ScrollingMovementMethod());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    textView.setText(Html.fromHtml(savedContent.get("--anaf"), Html.FROM_HTML_MODE_COMPACT));
+                } else {
+                    textView.setText(Html.fromHtml(savedContent.get("--anaf")));
+                }
+            });
         } catch (Exception e) {
             // TODO notify user of unexpected error
             show("Error:" + e);
